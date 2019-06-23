@@ -57,8 +57,12 @@ public class KitapController {
     }
 
     public void onDelete(){
-        if (selectedKitap!=null)
+        if (selectedKitap!=null) {
             kitapService.sil(selectedKitap);
+            FacesContext.getCurrentInstance()
+                    .addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Silme İşlemi Başarılı",""));
+        }
     }
 
     public void onListele(){

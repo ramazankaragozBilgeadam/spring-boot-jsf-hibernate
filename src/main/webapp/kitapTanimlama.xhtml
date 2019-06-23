@@ -94,8 +94,8 @@
 
                             <p:panel id="listeleButtons">
                                 <p:panelGrid columns="2">
-                                    <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}" update="growl"/>
-                                    <h:commandButton value="Listele" actionListener="#{kitapController.onListele}" update="growl"/>
+                                    <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}" update="growl kitapListeleTable"/>
+                                    <h:commandButton value="Listele" actionListener="#{kitapController.onListele}"/>
                                 </p:panelGrid>
                             </p:panel>
 
@@ -104,6 +104,8 @@
                                          value="#{kitapController.kitapList}"
                                          selection="#{kitapController.selectedKitap}"
                                          var="kitap"
+                                         selectionMode="single"
+                                         rowKey="#{kitap.id}"
                             >
                                 <p:column headerText="Kitap Adı">
                                     <h:outputText value="#{kitap.adi}"/>
