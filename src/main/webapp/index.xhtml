@@ -15,8 +15,9 @@
             <h:panelGroup>
                 <p>Hoşgeldiniz..</p>
                 <h:form>
-                    <h:panelGrid columns="1">
+                    <h:panelGrid columns="2">
                         <h:commandButton value="Home" action="#{homeController.onRedirect}"/>
+                        <h:commandButton value="Kitap Tanımlama" actionListener="#{kitapController.onRedirect}"/>
                     </h:panelGrid>
                 </h:form>
             </h:panelGroup>

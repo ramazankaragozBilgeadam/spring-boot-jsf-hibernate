@@ -16,7 +16,65 @@
                 <p:panel id="kitapKaydetPanel">
                     <p:fieldset legend="Kitap Tanımla">
                         <h:form id="kitapKaydetForm">
+                            <p:panelGrid columns="3">
+                                <p:outputLabel for="adi" value="Kitap Adı:"/>
+                                <p:inputText id="adi"
+                                             value="#{kitapController.kitap.adi}"
+                                             required="true"
+                                             requiredMessage="Lütfen Kitap Adi Giriniz."
+                                />
+                                <p:message for="adi" display="text, icon"/>
 
+                                <p:outputLabel for="yazari" value="Kitap Yazarı:"/>
+                                <p:inputText id="yazari"
+                                             value="#{kitapController.kitap.yazari}"
+                                             required="true"
+                                             requiredMessage="Lütfen Yazarı Giriniz."
+                                />
+                                <p:message for="yazari" display="text, icon"/>
+
+                                <p:outputLabel for="ciltNo" value="Cilt Numarası:"/>
+                                <p:inputText id="ciltNo"
+                                             value="#{kitapController.kitap.kitapBilgi.ciltNo}"
+                                             required="true"
+                                             requiredMessage="Lütfen Cilt Numarası Giriniz."
+                                />
+                                <p:message for="ciltNo" display="text, icon"/>
+
+                                <p:outputLabel for="fiyat" value="Fiyat:"/>
+                                <p:spinner id="fiyat"
+                                           min="10"
+                                           value="#{kitapController.kitap.kitapBilgi.fiyat}"
+                                           required="true"
+                                           requiredMessage="Lütfen Fiyat Giriniz."
+                                />
+                                <p:message for="fiyat" display="text, icon"/>
+
+                                <p:outputLabel for="yayinTarihi" value="Yayin Tarihi:"/>
+                                <p:calendar id="yayinTarihi"
+                                            value="#{kitapController.kitap.kitapBilgi.yayinTarihi}"
+                                            required="true"
+                                            requiredMessage="Lütfen Yayın Tarihi Giriniz."
+                                />
+                                <p:message for="yayinTarihi" display="text, icon"/>
+
+                                <p:outputLabel for="yayinEvi" value="Yayın Evi:"/>
+                                <p:inputText id="yayinEvi"
+                                             value="#{kitapController.kitap.kitapBilgi.yayinEvi}"
+                                             required="true"
+                                             requiredMessage="Lütfen Yayın Evini Giriniz."
+                                />
+                                <p:message for="yayinEvi" display="text, icon"/>
+
+                                <p:outputLabel for="sayfaSayisi" value="Cilt Numarası:"/>
+                                <p:spinner id="sayfaSayisi"
+                                           min="40"
+                                           value="#{kitapController.kitap.kitapBilgi.yayinEvi}"
+                                           required="true"
+                                           requiredMessage="Lütfen Sayfa Sayısını Giriniz."
+                                />
+                                <p:message for="sayfaSayisi" display="text, icon"/>
+                            </p:panelGrid>
                         </h:form>
                     </p:fieldset>
                 </p:panel>

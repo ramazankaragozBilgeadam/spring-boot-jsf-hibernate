@@ -33,6 +33,9 @@ public class DefaultView implements WebMvcConfigurer {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
         registry.addViewController("/home").setViewName("forward:/home.xhtml");
+
+        registry.addViewController("/kitapTanimlama")
+                .setViewName("forward:/kitapTanimlama.xhtml");
     }
 
 

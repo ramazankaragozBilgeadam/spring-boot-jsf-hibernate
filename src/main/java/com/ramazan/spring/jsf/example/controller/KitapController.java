@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,15 @@ public class KitapController {
     @Autowired
     public KitapController(KitapService kitapService) {
         this.kitapService = kitapService;
+    }
+
+    public void onRedirect(){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .redirect("kitapTanimlama");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onKaydet(){
