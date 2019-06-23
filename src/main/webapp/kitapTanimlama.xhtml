@@ -12,7 +12,7 @@
         <ui:define name="content">
 
             <p:panel id="kitapTanimlamaPanel">
-
+                <p:growl id="growl" globalOnly="true"/>
                 <p:panel id="kitapKaydetPanel">
                     <p:fieldset legend="Kitap Tanımla">
                         <h:form id="kitapKaydetForm">
@@ -77,9 +77,12 @@
                             </p:panelGrid>
 
                             <p:panelGrid columns="3">
-                                <h:commandButton value="Kaydet" actionListener="#{kitapController.onKaydet}"/>
-                                <h:commandButton value="Güncelle" actionListener="#{kitapController.onUpdate}"/>
-                                <h:commandButton value="Temizle"/>
+                                <h:commandButton value="Kaydet"
+                                                 actionListener="#{kitapController.onKaydet}"
+                                                 update="growl"
+                                />
+                                <h:commandButton value="Güncelle" actionListener="#{kitapController.onUpdate}" update="growl"/>
+                                <h:commandButton value="Temizle" update="growl"/>
                             </p:panelGrid>
                         </h:form>
                     </p:fieldset>
@@ -91,8 +94,8 @@
 
                             <p:panel id="listeleButtons">
                                 <p:panelGrid columns="2">
-                                    <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}"/>
-                                    <h:commandButton value="Listele" actionListener="#{kitapController.onListele}"/>
+                                    <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}" update="growl"/>
+                                    <h:commandButton value="Listele" actionListener="#{kitapController.onListele}" update="growl"/>
                                 </p:panelGrid>
                             </p:panel>
 
