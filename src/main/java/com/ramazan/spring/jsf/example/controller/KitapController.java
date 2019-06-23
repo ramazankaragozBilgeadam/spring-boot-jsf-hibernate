@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,6 +44,9 @@ public class KitapController {
         if (kitapBilgi.getFiyat()!=null){
             kitap.setKitapBilgi(kitapBilgi);
             kitapService.kaydet(kitap);
+            FacesContext.getCurrentInstance()
+                    .addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Kayıt Başarılı",""));
         }
 
     }
