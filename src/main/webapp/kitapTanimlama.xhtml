@@ -76,12 +76,10 @@
                                 <p:message for="sayfaSayisi" display="text, icon"/>
                             </p:panelGrid>
 
-                            <p:panelGrid columns="5">
+                            <p:panelGrid columns="3">
                                 <h:commandButton value="Kaydet" actionListener="#{kitapController.onKaydet}"/>
                                 <h:commandButton value="Güncelle" actionListener="#{kitapController.onUpdate}"/>
-                                <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}"/>
                                 <h:commandButton value="Temizle"/>
-                                <h:commandButton value="Listele" actionListener="#{kitapController.onListele}"/>
                             </p:panelGrid>
                         </h:form>
                     </p:fieldset>
@@ -90,10 +88,19 @@
                 <p:panel id="kitapListelePanel">
                     <p:fieldset legend="Kitap Listesi">
                         <h:form id="kitapListeleForm">
+
+                            <p:panel id="listeleButtons">
+                                <p:panelGrid columns="2">
+                                    <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}"/>
+                                    <h:commandButton value="Listele" actionListener="#{kitapController.onListele}"/>
+                                </p:panelGrid>
+                            </p:panel>
+
                             <p:dataTable id="kitapListeleTable"
-                                value="#{kitapController.kitapList}"
-                                selection="#{kitapController.selectedKitap}"
-                                var="kitap"
+                                         emptyMessage="Listelenecek Kitap Bulunumamadı..."
+                                         value="#{kitapController.kitapList}"
+                                         selection="#{kitapController.selectedKitap}"
+                                         var="kitap"
                             >
                                 <p:column headerText="Kitap Adı">
                                     <h:outputText value="#{kitap.adi}"/>
