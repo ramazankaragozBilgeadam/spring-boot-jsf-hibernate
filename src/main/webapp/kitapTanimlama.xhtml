@@ -75,6 +75,14 @@
                                 />
                                 <p:message for="sayfaSayisi" display="text, icon"/>
                             </p:panelGrid>
+
+                            <p:panelGrid columns="5">
+                                <h:commandButton value="Kaydet" actionListener="#{kitapController.onKaydet}"/>
+                                <h:commandButton value="Güncelle" actionListener="#{kitapController.onUpdate}"/>
+                                <h:commandButton value="Sil" actionListener="#{kitapController.onDelete}"/>
+                                <h:commandButton value="Temizle"/>
+                                <h:commandButton value="Listele" actionListener="#{kitapController.onListele}"/>
+                            </p:panelGrid>
                         </h:form>
                     </p:fieldset>
                 </p:panel>
