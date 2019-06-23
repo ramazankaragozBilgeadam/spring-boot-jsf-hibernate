@@ -90,7 +90,36 @@
                 <p:panel id="kitapListelePanel">
                     <p:fieldset legend="Kitap Listesi">
                         <h:form id="kitapListeleForm">
+                            <p:dataTable id="kitapListeleTable"
+                                value="#{kitapController.kitapList}"
+                                selection="#{kitapController.selectedKitap}"
+                                var="kitap"
+                            >
+                                <p:column headerText="Kitap Adı">
+                                    <h:outputText value="#{kitap.adi}"/>
+                                </p:column>
 
+                                <p:column headerText="Kitap Yazarı">
+                                    <h:outputText value="#{kitap.yazari}"/>
+                                </p:column>
+
+                                <p:column headerText="Cilt No">
+                                    <h:outputText value="#{kitap.kitapBilgi.ciltNo}"/>
+                                </p:column>
+
+                                <p:column headerText="Sayfa Sayısı">
+                                    <h:outputText value="#{kitap.kitapBilgi.sayfaSayisi}"/>
+                                </p:column>
+
+                                <p:column headerText="Yayın Evi">
+                                    <h:outputText value="#{kitap.kitapBilgi.yayinEvi}"/>
+                                </p:column>
+
+                                <p:column headerText="Fiyat">
+                                    <h:outputText value="#{kitap.kitapBilgi.fiyat}"/>
+                                </p:column>
+
+                            </p:dataTable>
                         </h:form>
                     </p:fieldset>
                 </p:panel>
