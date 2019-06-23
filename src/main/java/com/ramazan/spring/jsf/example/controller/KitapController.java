@@ -1,6 +1,7 @@
 package com.ramazan.spring.jsf.example.controller;
 
 import com.ramazan.spring.jsf.example.entity.Kitap;
+import com.ramazan.spring.jsf.example.entity.KitapBilgi;
 import com.ramazan.spring.jsf.example.service.KitapService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class KitapController {
 
     private final KitapService kitapService;
     private Kitap kitap=new Kitap();
+    private KitapBilgi kitapBilgi=new KitapBilgi();
     private Kitap selectedKitap;
     private List<Kitap> kitapList=new ArrayList<>();
 
@@ -38,7 +40,11 @@ public class KitapController {
 
     public void onKaydet(){
 
-        kitapService.kaydet(kitap);
+        if (kitapBilgi.getFiyat()!=null){
+            kitap.setKitapBilgi(kitapBilgi);
+            kitapService.kaydet(kitap);
+        }
+
     }
 
     public void onUpdate(){
