@@ -4,6 +4,7 @@ import com.ramazan.spring.jsf.example.entity.Kitap;
 import com.ramazan.spring.jsf.example.entity.KitapBilgi;
 import com.ramazan.spring.jsf.example.service.KitapService;
 import lombok.Data;
+import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -52,13 +53,21 @@ public class KitapController {
     }
 
     public void onUpdate(){
-        if (selectedKitap!=null)
-        kitapService.update(selectedKitap);
+        if (selectedKitap!=null) {
+            kitap.setId(selectedKitap.getId());
+            kitapBilgi.setId(selectedKitap.getKitapBilgi().getId());
+            kitap.setKitapBilgi(kitapBilgi);
+            kitapService.update(kitap);
+            FacesContext.getCurrentInstance()
+                    .addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO,"Güncelleme Başarılı",""));
+        }
     }
 
     public void onDelete(){
         if (selectedKitap!=null) {
             kitapService.sil(selectedKitap);
+            onListele();
             FacesContext.getCurrentInstance()
                     .addMessage(null,
                             new FacesMessage(FacesMessage.SEVERITY_INFO,"Silme İşlemi Başarılı",""));
@@ -67,6 +76,20 @@ public class KitapController {
 
     public void onListele(){
         kitapList=kitapService.findAll();
+    }
+
+
+    public void onRowSelected(SelectEvent selectEvent){
+        if (selectEvent.getObject()!=null){
+            this.kitap=selectedKitap;
+            this.kitapBilgi=selectedKitap.getKitapBilgi();
+        }
+    }
+
+    public void onTemizle(){
+        this.kitap=new Kitap();
+        this.kitapBilgi=new KitapBilgi();
+        this.kitapList=new ArrayList<>();
     }
 
 

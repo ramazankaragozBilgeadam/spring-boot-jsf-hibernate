@@ -82,7 +82,7 @@
                                                  update="growl"
                                 />
                                 <h:commandButton value="Güncelle" actionListener="#{kitapController.onUpdate}" update="growl"/>
-                                <h:commandButton value="Temizle" update="growl"/>
+                                <h:commandButton value="Temizle" actionListener="#{kitapController.onTemizle}" update="growl kitapKaydetForm :kitapListeleForm"/>
                             </p:panelGrid>
                         </h:form>
                     </p:fieldset>
@@ -107,6 +107,9 @@
                                          selectionMode="single"
                                          rowKey="#{kitap.id}"
                             >
+                                <p:ajax event="rowSelect" update=":kitapKaydetForm"
+                                        listener="#{kitapController.onRowSelected}"/>
+
                                 <p:column headerText="Kitap Adı">
                                     <h:outputText value="#{kitap.adi}"/>
                                 </p:column>
